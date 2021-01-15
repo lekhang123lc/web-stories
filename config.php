@@ -12,7 +12,7 @@ class Config{
     private $limitPerCategory = 15; // limit stories per categories
     private $maxCategories = 100; // limit categories in sidebar
 
-    private $title = "Funny";
+    private $title = "Web Stories";
 
     private $tableAccount = "accounts";
     private $tableCategories = "categories" ;

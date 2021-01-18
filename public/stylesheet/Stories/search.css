@@ -1,0 +1,181 @@
+body{
+	background-color: #ffffff;
+	font-family: SVN-Avo;
+	margin: 0px auto ;
+}
+
+#header {
+    margin: 0px auto;
+	margin-left: 320px;
+	font-family: SVN-Avo;
+	font-size: 20;
+	font-weight: 800;
+	position: relative;
+	height: 100px;
+	background-color:#ffffff;
+
+}
+
+#header img {
+    width: 138px;
+    height: 100px;
+}
+
+#header ul li {
+	
+	list-style: none;
+	display: inline-block;
+	
+}
+
+#header ul li a {
+	text-decoration: none;
+	display: block;
+	padding: 0px 20px 0px 20px;
+	color: gray;
+	margin-bottom: 30px;
+	line-height: 100px;
+	
+	font-size: 20px;
+	font-weight: 800;
+}
+.content-body {
+	padding-top: 120px;
+	display: grid;
+	grid-template-columns: 350px 1250px;
+}
+
+th {
+	text-align: center;
+
+}
+
+.cat a {
+	text-decoration: none;
+	color: gray;
+}
+
+.cat{
+	margin-left: 100px;
+}
+
+.cat th {
+	background-color:  gray;
+	width: 204px;
+	display: block;
+	color: #ffffff;
+	line-height: 40px;
+	text-transform: uppercase;
+	font-size: 17px;
+	font-weight: 400;
+}
+
+.cat td{
+	border: 2px solid gray;
+	margin: 5px auto;
+	width: 200px;
+	display: block;
+	text-align: center;
+	line-height: 40px;
+	text-transform: uppercase;
+	font-size: 17px;
+	font-weight: 400;
+}
+
+
+
+.title-search {
+	
+	width: 800px;
+	height: 100px;
+	background-color: gray;
+	font-size: 40px;
+	font-weight: 800;
+	color: #ffffff;
+}
+
+.title-search span {
+	margin-left: 50px;
+	line-height: 80px;
+}
+
+.search-story {
+	margin: 50px 150px;
+}
+
+.search-story input {
+	width: 400px;
+	height: 40px;
+	border: gray solid 2px;
+}
+
+.search-story button {
+	width: 100px;
+	height: 40px;
+	background-color: gray;
+	color: #ffffff;
+	font-weight: 700;
+}
+ 
+#filter .filter {
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.filter-table {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 150px 350px;
+    grid-template-rows: 80px 80px 80px;
+}
+
+.filter-table select,input {
+    height: 40px;
+}
+
+.content .item .stories {
+	margin-left: 10px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	width: 800px;
+	height: 270px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: auto auto auto;
+}
+
+
+.result {
+	margin-left: 10px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	width: 800px;
+	height: 1800px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.result a {
+	color: #000000;
+	font-size: 18px;
+	display: inline;
+	text-align: center;
+}
+
+.result .image {
+	width: 240px;
+	height: 240px;
+}
+
+h3 {
+	font-size: 20px;
+	font-weight: 600;
+	width: 200px;
+	height: 40px;
+	background-color: gray;
+	text-align: center;
+	line-height: 40px;
+	color: #ffffff;
+}
+

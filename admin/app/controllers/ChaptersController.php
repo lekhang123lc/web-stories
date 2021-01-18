@@ -4,28 +4,33 @@ if ( !defined("#_JEXEC_#") ){
     echo "<a style = 'font-size: 100px;' href = 'index.php'> Quay lại trang chủ </a> ";
     die;
 }
+class ChaptersController {
+  private $ChaptersModel;
 
-class ChaptersController{
+  private $StoriesModel;
 
-    private $ChaptersModel;
-    private $StoriesModel;
+  private $file;
 
-    private $file;
+  public function __construct()
+  {
 
-    public function __construct(){
         require_once("app/models/ChaptersModel.php");
         $this->ChaptersModel = new ChaptersModel;
         require_once("app/models/StoriesModel.php");
         $this->StoriesModel = new StoriesModel;
-    }
+  }
 
-    public function showCreate($params){
+  public function showCreate($params)
+  {
+
         $this->file = "create";
         $this->content['story'] = $this->StoriesModel->readDetail($params['id_story']);
         $this->display();
-    }
+  }
 
-    public function create(){
+  public function create()
+  {
+
         if ( empty( $_POST[ 'name' ] ) ) $this->message = Config::GetConfig("errorName");
         else{
 
@@ -44,25 +49,30 @@ class ChaptersController{
         }
         header("Location: ".URL::buildURL("Stories", "showUpdate", ['id' => $_POST['id_story']]));
         
-    }
+  }
 
-    public function read( $params = array() ){  
+  public function read($params = array() )
+  {
+  
 
         $this->content = $this->ChaptersModel->getChapters($params['id_story']);
         $this->file = "read";
 
         $this->display();
-    }
+  }
 
-    public function showUpdate( $params = array() ){
+  public function showUpdate($params = array() )
+  {
+
         $this->content['story'] = $this->StoriesModel->readDetail($params['id_story']);
         $this->content['chapter'] = $this->ChaptersModel->readDetail( $params[ 'id' ] ) ;
         $this->file = "update";
         $this->display();
-    }
+  }
 
+  public function update($params = array() )
+  {
 
-    public function update( $params = array() ){
         
         $id_story = $_POST['id_story'];
         $id = $_POST['id'];
@@ -78,22 +88,28 @@ class ChaptersController{
         $this->message = "Thêm chương mới thành công !";
         
         header("Location: ".URL::buildURL("Stories", "showUpdate", ['id' => $_POST['id_story']]));
-    }
+  }
 
-    public function delete(){
+  public function delete()
+  {
+
         $this->ChaptersModel->delete($_GET['id']);
         header("Location: ".$_SESSION['back_link']);
-    }
+  }
 
-    private function display(){
+  private function display()
+  {
+
         $this->file ="Chapters/$this->file";
         session_start();
         if ( empty($_SESSION['back_link']) ) $this->back_link="http://".$_SERVER['HTTP_HOST'];
         else $this->back_link = $_SESSION['back_link'];
         //$_SESSION['back_link'] = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
         include("app/views/index.php");
-    }
+  }
 
 }
+
+
 
 ?>

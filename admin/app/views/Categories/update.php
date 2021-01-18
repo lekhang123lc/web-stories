@@ -15,11 +15,4 @@
         <input type="text" class="form-control" id="name" name="name" value= "<?php echo $category[0]['name']; ?>">    
 
         <label for="desc">Mô tả</label>
-        <textarea rows="5" cols="120" maxlength = "1000" name="description" class="form-control"><?php echo $category[0]['description']; ?></textarea>
-	</div>
-    <input type="hidden" name = "id_story" value = "<?php echo $article['id']; ?>">
-    <input type="hidden" name = "id" value = "<?php echo $chapter['id']; ?>">
-    <input type = "submit" value = "Lưu chỉnh sửa" class="btn btn-primary" />
-    <a href="<?php echo $this->back_link; ?>" class="btn btn-danger">Hủy bỏ</a>
-</form>
-
+        <textarea rows="5" cols="120" maxlength = "1000" name="description" class="form-control"><?php echo $category[0]['description']; ?>

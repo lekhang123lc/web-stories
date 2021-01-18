@@ -22,7 +22,3 @@ if ( !defined("#_JEXEC_#") ){
                     </li>
                     <?php }?>
             <?php }?>
-        </ul>
-</div>
-
-</div>

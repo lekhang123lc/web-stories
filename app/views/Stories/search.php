@@ -81,4 +81,3 @@ $Page = URL::buildPage($this->maxPage, "Stories", "search", $params);
 	</div>
 	
 <?php endif; ?>
-</div>

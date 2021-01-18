@@ -5,18 +5,17 @@ if ( !defined("#_JEXEC_#") ){
     die;
 }
 
-class URL{
-
-    public static function buildURL( $controller, $action, $params = array() ){
+class URL {
+  public static function buildURL($controller, $action, $params = array() )
+  {
         
         $query = http_build_query( array('params' => $params) );
         $url = urlencode( $query ); 
         return "index.php?controller=$controller"."Controller&action=$action&params=$url";
-    }
+  }
 
-
-
-    public static function buildPage( $maxPage, $controller, $action, $params = array() ){
+  public static function buildPage($maxPage, $controller, $action, $params = array() )
+  {
         $currentPage = $params['currentPage'];
         if ( !empty($_GET['search']) )  $params['search'] = $_GET['search'];
         if ( !empty($_POST['search']) ) $params['search'] = $_POST['search'];
@@ -57,8 +56,9 @@ class URL{
 
         return $Page;
 
-    }
+  }
 
 }
+
 
 ?>

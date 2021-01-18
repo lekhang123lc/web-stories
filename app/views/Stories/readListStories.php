@@ -29,6 +29,3 @@ unset($stories['category']);
                 </div>
             </div>
         <?php }?>
-    </div>	
-</div>
-<br/>

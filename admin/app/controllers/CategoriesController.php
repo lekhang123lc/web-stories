@@ -5,32 +5,41 @@ if ( !defined("#_JEXEC_#") ){
     die;
 }
 
-class CategoriesController{
+class CategoriesController {
+  private $model;
 
-    private $model;
+  private $file;
 
-    private $file;
-    private $type;
+  private $type;
 
-    private $currentPage ;
-    private $maxPage ;
-    private $content ;
-    private $search ;
-    private $message ;
-    private $LimitPerPage;
-    private $id_cat;
+  private $currentPage;
 
-    public function __construct(){
+  private $maxPage;
+
+  private $content;
+
+  private $search;
+
+  private $message;
+
+  private $LimitPerPage;
+
+  private $id_cat;
+
+  public function __construct()
+  {
         include("app/models/CategoriesModel.php");
         $this->model = new CategoriesModel();
-    }
+  }
 
-    public function showCreate(){
+  public function showCreate()
+  {
         $this->file = "create";
         $this->display();
-    }
+  }
 
-    public function create(){
+  public function create()
+  {
         if ( !isset( $_POST[ 'name' ] ) ) $this->message = Config::GetConfig("errorName");
         else{
             $name = $_POST['name'] ;
@@ -42,9 +51,11 @@ class CategoriesController{
         }
         
         $this->read();
-    }
+  }
 
-    public function read( $params = array() ){  
+  public function read($params = array() )
+  {
+  
         
         $currentPage = isset( $params[ 'currentPage' ] ) ? $params[ 'currentPage' ] : 1 ;
         $search = isset( $_POST[ 'search' ] ) ? $_POST[ 'search' ] : "" ;
@@ -59,16 +70,17 @@ class CategoriesController{
         $this->LimitPerPage = Config::GetConfig("LimitPerPage");  
 
         $this->display();
-    }
+  }
 
-    public function showUpdate( $params = array() ){
+  public function showUpdate($params = array() )
+  {
         $this->content = $this->model->readDetail( $params[ 'id' ] ) ;
         $this->file = "update";
         $this->display();
-    }
+  }
 
-
-    public function update( $params = array() ){
+  public function update($params = array() )
+  {
         
         if ( !isset( $params['id'] ) ) $this->message = Config::GetConfig( "errorID" );
         else if ( !isset( $_POST[ 'name' ] )  ){
@@ -85,9 +97,10 @@ class CategoriesController{
         }
         
         $this->read();
-    }
+  }
 
-    public function delete(){
+  public function delete()
+  {
         if ( isset( $_GET['id'] ) ) {
             $ID =  $_GET['id']  ;
             if ( $ID != Config::GetConfig("defaultCategory") ){
@@ -99,17 +112,19 @@ class CategoriesController{
         else $this->message = Config::GetConfig( "errorID" );
 
         $this->read();
-    }
+  }
 
-    private function display(){
+  private function display()
+  {
         $this->file ="Categories/$this->file";
         session_start();
         if ( empty($_SESSION['back_link']) ) $this->back_link="http://".$_SERVER['HTTP_HOST'];
         else $this->back_link = $_SESSION['back_link'];
         $_SESSION['back_link'] = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
         include("app/views/index.php");
-    }
+  }
 
 }
+
 
 ?>

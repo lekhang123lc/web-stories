@@ -22,13 +22,3 @@ if ( !defined("#_JEXEC_#") ){
                     <strong> <?php echo $this->message; ?> </strong>
                 </div>
             <?php endif; ?>
-			<h1>Đăng nhập để tiếp tục</h1>
-			<form action="index.php?controller=AccountController&action=requestLogin" method="post" >
-                <input type="text" name="username" placeholder="Tên đăng nhập" />
-                <input type="password" name="password" placeholder="Mật khẩu" />
-                <input type="submit" value="Đăng nhập" />
-			</form>
-		</div>
-			
-	</body>
-</html>

@@ -64,7 +64,3 @@ if ( !defined("#_JEXEC_#") ){
 		</div>
 		
 		<?php if ( isset($Page) ) require_once("app/views/pagination.php");  ?>
-		
-		
-	</body>
-</html>

@@ -40,8 +40,3 @@
                 <td><button onclick="Delete(<?php echo $chapter['id']; ?>)" class="btn btn-danger"> Xóa  </button></td>
                 </tr>
             <?php endforeach; ?>
-        </tbody>
-    </table>            
-</div>
-
-

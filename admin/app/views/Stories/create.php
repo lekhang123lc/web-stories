@@ -15,12 +15,3 @@
             <?php foreach( $this->listCategories as $category ) { ?>
                 <option value=<?php echo $category['id'] ?> ><?php echo $category['name'] ?></option>
             <?php } ?>
-        </select> 
-
-        <label for="desc">Nội dung</label><textarea class="form-control" rows="5" cols="120" maxlength = "1000" name="description" placeholder = "Nội dung"></textarea>
-        <input type="file" name="fileToUpload" class="form-group" style="margin-top:10px">
-	</div>
-    
-    <input type = "submit" value = "Lưu chỉnh sửa" class="btn btn-primary" />
-    <a href="<?php echo $this->back_link; ?>" class="btn btn-danger">Hủy bỏ</a>
-</form>

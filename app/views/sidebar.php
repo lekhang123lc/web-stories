@@ -22,6 +22,3 @@ foreach( $this->listCategories as $i => $category ){
             </a></td></tr>
 
         <?php } ?>
-    </tbody>
-</table>
-

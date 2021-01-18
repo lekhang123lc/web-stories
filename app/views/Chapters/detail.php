@@ -64,6 +64,3 @@ foreach( $this->content['chapters'] as $key => $chapter ){
 			<?php if ( $next ): ?>
 				<a href="<?php echo URL::buildURL("Chapters","readDetailChapter", ['id'=>$next, 'id_story'=>$this->content['story']['id']]); ?>" class="btn btn-primary">Chương sau</a>
 			<?php endif; ?>
-		</div>
-	</div>
-</div>

@@ -5,29 +5,43 @@ if ( !defined("#_JEXEC_#") ){
     die;
 }
 
-class StoriesController{
+class StoriesController {
+  private $limitPerPage;
 
-    private $limitPerPage;
-    private $limitCategories;
-    private $limitPerCategory;
-    private $CategoriesModel;
-    private $StoriesModel;
-    private $ChaptersModel;
+  private $limitCategories;
 
-    private $cat_id;
-    private $currentPage;
-    private $maxPage;
-    private $search;
-    private $from;
-    private $to;
+  private $limitPerCategory;
 
-    private $message;
-    private $files;
-    private $content;
-    private $categories = array();
-    private $listCategories;
+  private $CategoriesModel;
 
-    public function __construct(){
+  private $StoriesModel;
+
+  private $ChaptersModel;
+
+  private $cat_id;
+
+  private $currentPage;
+
+  private $maxPage;
+
+  private $search;
+
+  private $from;
+
+  private $to;
+
+  private $message;
+
+  private $files;
+
+  private $content;
+
+  private $categories =  array();
+
+  private $listCategories;
+
+  public function __construct()
+  {
         require_once("app/models/CategoriesModel.php");
         $this->CategoriesModel = CategoriesModel::getInstance();
         require_once("app/models/StoriesModel.php");
@@ -38,9 +52,10 @@ class StoriesController{
         $this->limitPerPage = Config::GetConfig("limitPerPage");
         $this->limitCategories = Config::GetConfig("limitCategories");
         $this->limitPerCategory = Config::GetConfig("limitPerCategory");
-    }
+  }
 
-    public function home(){
+  public function home()
+  {
 
         $this->categories = $this->CategoriesModel->readList( $this->limitCategories );
         foreach( $this->categories as $category ){
@@ -49,9 +64,10 @@ class StoriesController{
         }
         $this->files['home'] = "Stories/home";
         $this->display();
-    }
+  }
 
-    public function readListStories( $params = array() ){
+  public function readListStories($params = array() )
+  {
 
         $this->id_cat = isset( $params['id_cat'] ) ? $params['id_cat'] : "";
         $this->currentPage = isset( $params['currentPage'] ) ? $params['currentPage'] : 1;
@@ -63,16 +79,18 @@ class StoriesController{
 
         $this->files['stories'] = "Stories/readListStories";
         $this->display();
-    }
+  }
 
-    public function showSearch(){
+  public function showSearch()
+  {
         $this->files['search'] = "Stories/search";
         $this->message = "";
 
         $this->display();
-    }
+  }
 
-    public function search( $params = array() ){
+  public function search($params = array() )
+  {
         $this->id_cat = isset( $params['id_cat'] ) ? $params['id_cat'] : "";
         $this->currentPage = isset( $params['currentPage'] ) ? $params['currentPage'] : 1;
         $this->search = isset( $params[ 'search' ] ) ? $params[ 'search' ] : "" ;
@@ -89,9 +107,10 @@ class StoriesController{
         $this->maxPage = $this->StoriesModel->Count("page", $Filter, $this->limitPerPage);
         $this->display();
 
-    }
+  }
 
-    public function readDetailStory( $params = array() ){
+  public function readDetailStory($params = array() )
+  {
         $ID = $params['id'];
         $this->files['article'] = "Stories/article";
         $this->content['story'] = $this->StoriesModel->readDetailStory( $ID )[0];
@@ -99,14 +118,16 @@ class StoriesController{
         $this->content['category'] = $this->CategoriesModel->readDetail( $this->content['story']['id_cat'] )[0];
 
         $this->display();
-    }
+  }
 
-    private function display(){
+  private function display()
+  {
         if ( empty($this->listCategories) ) 
             $this->listCategories = $this->CategoriesModel->readList( Config::GetConfig("maxCategories") );
         require_once("app/views/index.php");
-    }
+  }
 
 }
+
 
 ?>

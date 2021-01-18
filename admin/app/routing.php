@@ -5,13 +5,15 @@ if ( !defined("#_JEXEC_#") ){
     die;
 }
 
-class Routing{
-    
-    private $controller = "StoriesController" ;
-    private $action = "read" ;
-    private $params = array() ;
+class Routing {
+  private $controller =  "StoriesController" ;
 
-    public function __construct(){
+  private $action =  "read" ;
+
+  private $params =  array() ;
+
+  public function __construct()
+  {
         date_default_timezone_set("Asia/Ho_Chi_Minh");
         session_start();
         if ( isset( $_GET[ 'controller' ] ) ) $this->controller = $_GET[ 'controller' ];
@@ -27,9 +29,10 @@ class Routing{
             $this->controller = "AccountController";
             $this->action = "login";
         }
-    }
+  }
 
-    public function start(){
+  public function start()
+  {
         if ( !file_exists("app/controllers/$this->controller.php") ) {
             echo Config::GetConfig('NotFound');
             die;
@@ -50,7 +53,9 @@ class Routing{
 
         if ( !empty($this->params) ) $Class->$Method($this->params);
         else $Class->$Method();
-    }
+  }
+
 }
+
 
 ?>

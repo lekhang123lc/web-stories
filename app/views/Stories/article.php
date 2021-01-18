@@ -34,6 +34,3 @@ if ( !defined("#_JEXEC_#") ){
 
                 </tr>
             <?php endforeach; ?>
-        </tbody>
-    </table>            
-</div>

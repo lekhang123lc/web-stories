@@ -72,6 +72,3 @@
     </div>
     <div>
         <?php if ( isset($Page) ) require_once("app/views/pagination.php");  ?>
-    </div>
-</body>
-</html>

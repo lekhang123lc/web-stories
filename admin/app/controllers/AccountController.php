@@ -5,47 +5,74 @@ if ( !defined("#_JEXEC_#") ){
     die;
 }
 
-class AccountController{
-    private $model;
-    private $message;
+class AccountController {
+  private $model;
 
-    public function __construct(){
+  private $message;
+
+  public function __construct()
+  {
         require("app/models/AccountModel.php");
         $this->model = new AccountModel( "tableAccount" );
-    }
+  }
 
-    public function login(){
+  public function login()
+  {
         if ( isset( $_SESSION[ 'username' ] ) ) header("Location: index.php?controller=CategoriesController&action=read");
         else $this->display();
-    }
+  }
 
-    public function requestLogin(){
+  public function requestLogin()
+  {
         $username = $_POST[ 'username' ];
         $password = md5( $_POST[ 'password' ] );
         $USER = $this->model->GetPass( $username ) ;
         if ( empty( $USER['password'] ) ) $this->loginFailed();
         else if ( $USER['password'] != $password ) $this->loginFailed();
         else $this->loginSuccess( $USER['id'] );
-    }
+  }
 
-    private function loginSuccess( $id ){
+  private function loginSuccess($id)
+  {
         $_SESSION['username'] = $id;
         header("Location: index.php?controller=CategoriesController&action=read");
-    }
+  }
 
-    private function loginFailed(){
+  private function loginFailed()
+  {
         $this->message = Config::GetConfig("errorLogin");;
         $this->display();
-    }
+  }
 
-    public function logout(){
+  public function logout()
+  {
         unset( $_SESSION['username'] );
         header("Location: index.php");
-    }
+  }
 
-    private function display(){
+  public function read($params = array() )
+  {
+ 
+  }
+
+  public function showUpdate($params = array() )
+  {
+  }
+
+  public function update($params = array() )
+  {
+  }
+
+  public function delete()
+  {
+  }
+
+  private function display()
+  {
         require("app/views/Account/index.php");
-    }
+  }
+
 }
+
 
 ?>

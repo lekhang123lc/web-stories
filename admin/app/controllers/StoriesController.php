@@ -5,27 +5,39 @@ if ( !defined("#_JEXEC_#") ){
     die;
 }
 
-class StoriesController{
+class StoriesController {
+  private $AccountModel;
 
-    private $AccountModel;
-    private $StoriesModel;
-    private $CategoriesModel;
-    private $ChaptersModel;
+  private $StoriesModel;
 
-    private $file;
-    private $type;
+  private $CategoriesModel;
 
-    private $currentPage ;
-    private $maxPage ;
-    private $content ;
-    private $categories;
-    private $search ;
-    private $message ;
-    private $LimitPerPage;
-    private $id_cat;
-    private $back_link;
+  private $ChaptersModel;
 
-    public function __construct(){
+  private $file;
+
+  private $type;
+
+  private $currentPage;
+
+  private $maxPage;
+
+  private $content;
+
+  private $categories;
+
+  private $search;
+
+  private $message;
+
+  private $LimitPerPage;
+
+  private $id_cat;
+
+  private $back_link;
+
+  public function __construct()
+  {
         require_once("app/models/StoriesModel.php");
         $this->StoriesModel = new StoriesModel;
         require_once("app/models/CategoriesModel.php");
@@ -34,14 +46,16 @@ class StoriesController{
         $this->AccountModel = new AccountModel;
         require_once("app/models/ChaptersModel.php");
         $this->ChaptersModel = new ChaptersModel;
-    }
+  }
 
-    public function showCreate(){
+  public function showCreate()
+  {
         $this->file = "create";
         $this->display();
-    }
+  }
 
-    public function create(){
+  public function create()
+  {
         if ( !isset( $_POST[ 'name' ] ) ) $this->message = Config::GetConfig("errorName");
         else{
             $id_cat = isset( $_POST["id_cat"] ) ? $_POST["id_cat"] : 1;
@@ -69,9 +83,11 @@ class StoriesController{
         }
         
         $this->showUpdate([ 'id' => $this->StoriesModel->getMaxID()[0]['id'] ]);
-    }
+  }
 
-    public function read( $params = array() ){  
+  public function read($params = array() )
+  {
+  
         
         $this->currentPage = isset( $params[ 'currentPage' ] ) ? $params[ 'currentPage' ] : 1 ;
         $this->search = isset( $_POST[ 'search' ] ) ? $_POST[ 'search' ] : "" ;
@@ -100,17 +116,18 @@ class StoriesController{
         $this->LimitPerPage = Config::GetConfig("LimitPerPage");  
 
         $this->display();
-    }
+  }
 
-    public function showUpdate( $params = array() ){
+  public function showUpdate($params = array() )
+  {
         $this->content['stories'] = $this->StoriesModel->readDetail( $params[ 'id' ] ) ;
         $this->content['chapters'] = $this->ChaptersModel->read($params[ 'id' ]);
         $this->file = "update";
         $this->display();
-    }
+  }
 
-
-    public function update( $params = array() ){
+  public function update($params = array() )
+  {
         
         if ( !isset( $params['id'] ) ) $this->message = Config::GetConfig( "errorID" );
         else if ( !isset( $_POST[ 'name' ] )  ){
@@ -145,9 +162,10 @@ class StoriesController{
         }
         
         $this->read();
-    }
+  }
 
-    public function delete(){
+  public function delete()
+  {
         if ( isset( $_GET['id'] ) ) {
             $ID = $_GET['id'] ;
             $row_article = $this->StoriesModel->readDetail( $ID );
@@ -161,9 +179,10 @@ class StoriesController{
         else $this->message = Config::GetConfig( "errorID" );
 
         $this->read();
-    }
+  }
 
-    private function display(){
+  private function display()
+  {
         if ( empty($this->listCategories) )
             $this->listCategories = $this->CategoriesModel->readAll();
         $this->file ="Stories/$this->file";
@@ -173,8 +192,9 @@ class StoriesController{
         else $this->back_link = $_SESSION['back_link'];
         $_SESSION['back_link'] = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
         include("app/views/index.php");
-    }
+  }
 
 }
+
 
 ?>

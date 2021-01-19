@@ -5,6 +5,7 @@
     }
     $article = $this->content['stories'][0];
     $chapters = $this->content['chapters'];
+  //  var_dump($article['id_cat'] == );
 ?>
 
 
@@ -17,7 +18,7 @@
         <label for="cat">Thể loại</label>
         <select name="id_cat"  class="form-control">
             <?php foreach( $this->listCategories as $category ) { ?>
-                <option value=<?php echo $category['id'] ?> ><?php echo $category['name'] ?></option>
+                <option value=<?php echo $category['id'] ?> <?php if ( $category['id'] == $article['id_cat'] ) echo "selected"; ?> ><?php echo $category['name'] ?></option>
             <?php } ?>
         </select> 
 
@@ -32,7 +33,7 @@
 <div class="crud table text-center table-striped">
     <table class="cate" width="100%">
         <th width="80%"><h3>Danh sách chương</h3></th>
-        <th width="20%"><a class="btn btn-primary" href="<?php echo URL::buildURL("Chapters", "showCreate", ['id_story' => $article['id'] ]); ?> ?>">Thêm chương</a></th>
+        <th width="20%"><a class="btn btn-primary" href="<?php echo URL::buildURL("Chapters", "showCreate", ['id_story' => $article['id'] ]); ?>">Thêm chương</a></th>
         <tbody>
             <?php foreach( $chapters as $chapter ): ?>
                 <tr class="text-center">

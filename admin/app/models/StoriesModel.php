@@ -59,7 +59,8 @@ class StoriesModel{
     }
 
     public function readDetail( $ID ){
-        $sql = " select * from $this->tableStories, $this->tableCategoryStory where id = ? ";
+        $sql = "select * from $this->tableStories, $this->tableCategoryStory 
+        where id_story = id and id = $ID";
         return $this->db->query( $sql , array( $ID ), "yes" );
     }
 

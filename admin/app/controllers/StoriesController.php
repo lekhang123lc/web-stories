@@ -125,7 +125,7 @@ class StoriesController{
             $name =  $_POST[ 'name' ] ;
             $content = isset( $_POST[ 'description' ] ) ? $_POST[ 'description' ] : Config::GetConfig("empty");
 
-            if ( isset( $_FILES["fileToUpload"]["name"] ) ){ // process img
+            if ( !empty( $_FILES["fileToUpload"]["name"] ) ){ // process img
                 if ( $old_article['feature_img'] != Config::GetConfig("defaultImageStory") )
                     if ( file_exists("../".$old_article['feature_img']) ) unlink("../".$old_article['feature_img']);
 

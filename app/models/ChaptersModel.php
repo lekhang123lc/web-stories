@@ -53,7 +53,7 @@ class ChaptersModel{
 
     public function read($id){
         
-        $sql = "select `id`,`name` from $this->tableChapters where `id_story` = $id order by `last_modified_time` desc";
+        $sql = "select `id`,`name` from $this->tableChapters where `id_story` = $id order by `created_time` desc";
 
         return $this->db->query( $sql, array(), "yes" );
     }
